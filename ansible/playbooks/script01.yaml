@@ -1,0 +1,5 @@
+- name: Script01  
+  hosts: all
+  tasks:
+    - name: Run script
+      ansible.builtin.script: ./scripts/script01.sh

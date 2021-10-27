@@ -1,0 +1,20 @@
+- name: Aggiungere utente ema 
+  hosts: all
+  tasks:
+    - name: Aggiungere utente ema
+      ansible.builtin.user:
+        name: ema
+        group: admin
+    - name: Cambiare la password di ema
+      user:
+        name: ema
+        update_password: always
+        password: "{{ '1234'|password_hash('sha512') }}"
+    - copy:
+        src: ./conf_files/sshd_config
+        dest: /etc/ssh/sshd_config
+    - name: Riavviare servizio sshd
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
+# ok

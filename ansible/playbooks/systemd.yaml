@@ -1,0 +1,19 @@
+- name: Abilitare servizi
+  hosts: all
+  tasks:
+    - name: Riavviare servizio containerd
+      ansible.builtin.systemd:
+        state: restarted
+        daemon_reload: yes
+        name: containerd
+    - name: Abilitare servizio containerd
+      ansible.builtin.systemd:
+        name: containerd
+        enabled: yes
+        masked: no   
+    - name: Abilitare servizio kubelet
+      ansible.builtin.systemd:
+        name: kubelet
+        enabled: yes
+        masked: no
+# ok

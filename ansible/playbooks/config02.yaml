@@ -1,0 +1,10 @@
+- name: Copiare file di configurazione k8s-config.yaml e calico.yaml
+  hosts: cp1
+  tasks:
+    - copy:
+        src: ./conf_files/k8s-config.yaml
+        dest: /home/ema/k8s-config.yaml
+    - copy:
+        src: ./conf_files/calico.yaml
+        dest: /home/ema/calico.yaml
+# ok

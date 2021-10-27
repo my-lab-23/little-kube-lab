@@ -1,0 +1,6 @@
+- name: Riavviare tutte le macchine 
+  hosts: all
+  tasks:
+    - name: Riavviare tutte le macchine
+      reboot:
+# ok        

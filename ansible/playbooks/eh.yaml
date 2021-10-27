@@ -1,0 +1,21 @@
+- name: Copiare cp1 /etc/hosts
+  hosts: cp1
+  tasks:
+    - copy:
+        src: ./conf_files/eh/cp1
+        dest: /etc/hosts
+
+- name: Copiare n1 /etc/hosts
+  hosts: n1
+  tasks:
+    - copy:
+        src: ./conf_files/eh/n1
+        dest: /etc/hosts        
+
+- name: Copiare n2 /etc/hosts
+  hosts: n2
+  tasks:
+    - copy:
+        src: ./conf_files/eh/n2
+        dest: /etc/hosts
+# ok

@@ -1,0 +1,19 @@
+- name: Recuperare la chiave dal control plane 
+  hosts: cp1
+  tasks:
+    - name: Recuperare la chiave dal control plane
+      ansible.builtin.shell: openssl x509 -pubkey \
+                             -in /etc/kubernetes/pki/ca.crt | \
+                             openssl rsa -pubin -outform der 2>/dev/null | \
+                             openssl dgst -sha256 -hex | sed 's/^.* //'
+      register: pubkey
+
+- name: Collegare il nodo
+  hosts: nodes
+  tasks:
+    - name: Collegare il nodo
+      become_user: ema
+      ansible.builtin.shell: echo 1234 | sudo -S kubeadm join 192.168.1.86:6443 \
+                             --token abcdef.0123456789abcdef \
+                             --discovery-token-ca-cert-hash sha256:{{ hostvars['cp1']['pubkey']['stdout'] }}
+# ok

@@ -1,0 +1,39 @@
+- name: Installare pacchetti 
+  hosts: all
+  tasks:
+    - name: Aggiungere chiavi apt
+      ansible.builtin.apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        state: present
+    - name: Aggiungere repository
+      ansible.builtin.apt_repository:
+        repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+        state: present        
+    - name: Aggiornare repository ed installare pacchetti
+      apt:
+        name: 
+          - apt-transport-https 
+          - ca-certificates 
+          - curl
+          - containerd
+          - kubelet 
+          - kubeadm 
+          - kubectl
+        update_cache: yes
+    - name: Impedire l'upgrade di containerd
+      dpkg_selections:
+        name: containerd
+        selection: hold
+    - name: Impedire l'upgrade di kubelet
+      dpkg_selections:
+        name: kubelet
+        selection: hold 
+    - name: Impedire l'upgrade di kubeadm
+      dpkg_selections:
+        name: kubeadm
+        selection: hold 
+    - name: Impedire l'upgrade di kubectl
+      dpkg_selections:
+        name: kubectl
+        selection: hold  
+# ok

@@ -1,0 +1,12 @@
+- name: Caricare moduli  
+  hosts: all
+  tasks:
+    - name: Caricare modulo br_netfilter
+      community.general.modprobe:
+        name: br_netfilter
+        state: present
+    - name: Caricare modulo overlay
+      community.general.modprobe:
+        name: overlay
+        state: present        
+# ok

@@ -1,0 +1,21 @@
+- name: Settare hostname  
+  hosts: cp1
+  tasks:
+    - name: Settare hostname cp1
+      ansible.builtin.hostname:
+        name: cp1
+
+- name: Settare hostname  
+  hosts: n1
+  tasks:
+    - name: Settare hostname n1
+      ansible.builtin.hostname:
+        name: n1
+
+- name: Settare hostname
+  hosts: n2
+  tasks:
+    - name: Settare hostname n2
+      ansible.builtin.hostname:
+        name: n2
+# ok

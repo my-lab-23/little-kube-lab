@@ -1,0 +1,15 @@
+- name: Disabilitare lo swap  
+  hosts: all
+  tasks:
+    - name: Rimuovere swapfile da /etc/fstab
+      mount:
+        name: "{{ item }}"
+        fstype: swap
+        state: absent
+      with_items:
+        - swap
+        - none
+    - name: Disabilitare lo swap
+      command: swapoff -a
+      when: ansible_swaptotal_mb > 0
+# ok

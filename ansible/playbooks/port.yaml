@@ -1,0 +1,9 @@
+- name: Recuperare la porta di collegamento 
+  hosts: cp1
+  tasks:
+    - name: Recuperare la porta di collegamento
+      become_user: ema
+      ansible.builtin.shell: kubectl get service my
+      register: port
+    - debug: msg="{{ port.stdout }}"
+# ok

@@ -1,0 +1,7 @@
+- name: Avvio del control plane
+  hosts: cp1
+  tasks:
+    - name: Avvio del control plane
+      become_user: ema
+      ansible.builtin.script: ./scripts/cp-fini.sh
+# ok

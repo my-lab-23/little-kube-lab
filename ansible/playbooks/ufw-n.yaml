@@ -1,0 +1,21 @@
+- name: Configurare il firewall dei nodi 
+  hosts: nodes
+  tasks:
+    - name: Allow port 22
+      community.general.ufw:
+        rule: allow
+        port: 22    
+    - name: Allow port 30000 to 32767 
+      community.general.ufw:
+        rule: allow
+        port: 30000:32767
+        proto: tcp
+    - name: Allow port 10250
+      community.general.ufw:
+        rule: allow
+        port: 10250
+        proto: tcp
+    - name: Abilitare UFW
+      community.general.ufw:
+        state: enabled
+# ok        

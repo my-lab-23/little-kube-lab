@@ -1,0 +1,7 @@
+- name: Copiare file di configurazione config.toml
+  hosts: all
+  tasks:
+    - copy:
+        src: ./conf_files/config.toml
+        dest: /etc/containerd/config.toml
+# ok

@@ -1,0 +1,7 @@
+- name: Distribuire l'applicazione di prova 
+  hosts: cp1
+  tasks:
+    - name: Distribuire l'applicazione di prova
+      become_user: ema
+      ansible.builtin.script: scripts/deploy.sh
+# ok
