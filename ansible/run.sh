@@ -14,6 +14,7 @@ ansible-playbook playbooks/ufw-n.yaml
 ansible-playbook playbooks/swapoff.yaml
 ansible-playbook playbooks/modprobe.yaml
 ansible-playbook playbooks/script01.yaml
+ansible-playbook playbooks/sysctl.yaml
 ansible-playbook playbooks/mkdirs.yaml
 ansible-playbook playbooks/config01.yaml
 ansible-playbook playbooks/config02.yaml
